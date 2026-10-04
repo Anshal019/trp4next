@@ -1,6 +1,6 @@
 /* ==========================================================================
    TRP4Next Café & Studio — SCRIPT.JS
-   Vanilla JavaScript for lightweight scroll fade-in & smooth interaction
+   Vanilla JavaScript for scroll fade-in, section nav tracking & smooth scroll
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -28,13 +28,42 @@ document.addEventListener('DOMContentLoaded', function () {
       observer.observe(el);
     });
   } else {
-    // Fallback for older browsers
     fadeElements.forEach(function (el) {
       el.classList.add('is-visible');
     });
   }
 
-  // 2. Smooth Scroll for Internal Links
+  // 2. Active Section Navigation Link Highlight on Scroll
+  var sections = document.querySelectorAll('section[id]');
+  var navLinks = document.querySelectorAll('.nav-link');
+
+  if ('IntersectionObserver' in window && sections.length > 0) {
+    var sectionObserver = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            var activeId = entry.target.getAttribute('id');
+            navLinks.forEach(function (link) {
+              if (link.getAttribute('href') === '#' + activeId) {
+                link.classList.add('active');
+              } else {
+                link.classList.remove('active');
+              }
+            });
+          }
+        });
+      },
+      {
+        threshold: 0.3
+      }
+    );
+
+    sections.forEach(function (section) {
+      sectionObserver.observe(section);
+    });
+  }
+
+  // 3. Smooth Scroll for Internal Nav Links
   var internalLinks = document.querySelectorAll('a[href^="#"]');
   
   internalLinks.forEach(function (link) {

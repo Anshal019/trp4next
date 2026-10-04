@@ -1,19 +1,21 @@
 /* ==========================================================================
    TRP4Next Café & Studio — MAIN STYLESHEET
    
-   COLOR PALETTE (EDIT HEX VALUES HERE IF DESIRED):
-   - Background: #FAF8F5 (warm parchment)
-   - Main text: #2C2623 (roasted coffee espresso)
-   - Accent: #C85A32 (wood-fire terracotta rust)
-   - Secondary/cards: #EFEAE1 (warm stone cream)
+   COLOR PALETTE — RICH COFFEE BROWN THEME:
+   - Background: #201611 (Deep espresso wood brown)
+   - Main text: #F5EBE1 (Warm cream latte text)
+   - Accent: #D97736 (Warm roasted terracotta amber)
+   - Secondary/cards: #2B2019 (Soft dark mocha card background)
+   - Border: #3D2E24 (Warm subtle border)
    ========================================================================== */
 
 :root {
-  /* EDIT COLOR HEX VALUES HERE */
-  --bg-color: #FAF8F5;        /* Background */
-  --text-color: #2C2623;      /* Main text */
-  --accent-color: #C85A32;    /* Accent */
-  --secondary-color: #EFEAE1; /* Secondary/cards */
+  /* EDIT COLOR HEX VALUES HERE — RICH BROWN THEME */
+  --bg-color: #201611;        /* Deep espresso brown background */
+  --text-color: #F5EBE1;      /* Warm cream latte text */
+  --accent-color: #D97736;    /* Warm amber terracotta accent */
+  --secondary-color: #2B2019; /* Cozy dark mocha card background */
+  --border-color: #3D2E24;    /* Warm brown border */
 
   /* Typography */
   --font-heading: 'Fraunces', Georgia, serif;
@@ -140,7 +142,7 @@ h1, h2, h3, h4 {
 
 .btn-accent {
   background-color: var(--accent-color);
-  color: var(--bg-color);
+  color: #FFFFFF;
   border-color: var(--accent-color);
 }
 
@@ -151,11 +153,12 @@ h1, h2, h3, h4 {
 .btn-outline {
   background-color: transparent;
   color: var(--text-color);
-  border-color: var(--text-color);
+  border-color: var(--border-color);
 }
 
 .btn-outline:hover {
   background-color: var(--secondary-color);
+  border-color: var(--accent-color);
 }
 
 .btn-large {
@@ -165,21 +168,23 @@ h1, h2, h3, h4 {
 
 
 /* ==========================================================================
-   1. TOP BAR
+   TOP BAR & NAVIGATION MENU
    ========================================================================== */
 .top-bar {
   position: sticky;
   top: 0;
   z-index: 100;
-  background-color: var(--bg-color);
-  border-bottom: 1px solid var(--secondary-color);
-  padding: 14px 0;
+  background-color: rgba(32, 22, 17, 0.95);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border-color);
+  padding: 12px 0;
 }
 
 .top-bar-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 16px;
 }
 
 .brand-logo {
@@ -197,17 +202,58 @@ h1, h2, h3, h4 {
 }
 
 .brand-sub {
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  opacity: 0.7;
+  color: var(--accent-color);
+}
+
+/* Navigation Links (Home, About, Menu, Gallery, Events, Contact) */
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  overflow-x: auto;
+  white-space: nowrap;
+  padding: 4px 0;
+  -webkit-overflow-scrolling: touch;
+}
+
+.nav-link {
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--text-color);
+  opacity: 0.8;
+  padding: 4px 8px;
+  border-bottom: 2px solid transparent;
+  transition: opacity 0.2s ease, border-color 0.2s ease;
+}
+
+.nav-link:hover, .nav-link.active {
+  opacity: 1;
+  color: var(--accent-color);
+  border-bottom-color: var(--accent-color);
+}
+
+@media (max-width: 820px) {
+  .top-bar-inner {
+    flex-wrap: wrap;
+  }
+  .nav-menu {
+    order: 3;
+    width: 100%;
+    border-top: 1px solid var(--border-color);
+    padding-top: 10px;
+    margin-top: 6px;
+    justify-content: space-between;
+  }
 }
 
 .top-bar-actions {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
 }
 
 @media (max-width: 480px) {
@@ -219,15 +265,17 @@ h1, h2, h3, h4 {
 
 
 /* ==========================================================================
-   2. HERO SECTION
+   1. HOME / HERO SECTION
    ========================================================================== */
 .hero-section {
   padding-top: 24px;
   padding-bottom: 30px;
+  scroll-margin-top: 100px;
 }
 
 .hero-card {
   background-color: var(--secondary-color);
+  border: 1px solid var(--border-color);
   border-radius: var(--radius);
   overflow: hidden;
 }
@@ -262,6 +310,7 @@ h1, h2, h3, h4 {
   align-items: center;
   gap: 8px;
   background-color: var(--bg-color);
+  border: 1px solid var(--border-color);
   padding: 6px 12px;
   border-radius: var(--radius);
   font-size: 0.85rem;
@@ -309,10 +358,11 @@ h1, h2, h3, h4 {
 
 
 /* ==========================================================================
-   3. ABOUT SECTION
+   2. ABOUT SECTION
    ========================================================================== */
 .about-section {
-  border-bottom: 1px solid var(--secondary-color);
+  border-bottom: 1px solid var(--border-color);
+  scroll-margin-top: 80px;
 }
 
 .about-lead {
@@ -342,6 +392,7 @@ h1, h2, h3, h4 {
 
 .tag {
   background-color: var(--secondary-color);
+  border: 1px solid var(--border-color);
   color: var(--text-color);
   padding: 6px 14px;
   border-radius: var(--radius);
@@ -351,8 +402,12 @@ h1, h2, h3, h4 {
 
 
 /* ==========================================================================
-   4. MENU SECTION
+   3. MENU SECTION
    ========================================================================== */
+.menu-section {
+  scroll-margin-top: 80px;
+}
+
 .menu-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -395,8 +450,8 @@ h1, h2, h3, h4 {
 
 .item-dots {
   flex: 1;
-  border-bottom: 1px dotted var(--text-color);
-  opacity: 0.3;
+  border-bottom: 1px dotted var(--border-color);
+  opacity: 0.5;
   min-width: 20px;
 }
 
@@ -414,7 +469,7 @@ h1, h2, h3, h4 {
 }
 
 .item-placeholder {
-  opacity: 0.6;
+  opacity: 0.7;
   border: 1px dashed var(--accent-color);
   padding: 10px;
   border-radius: var(--radius);
@@ -422,8 +477,12 @@ h1, h2, h3, h4 {
 
 
 /* ==========================================================================
-   5. PHOTO STRIP (ORGANIC UNEVEN MASONRY GRID)
+   4. GALLERY SECTION
    ========================================================================== */
+.photo-strip-section {
+  scroll-margin-top: 80px;
+}
+
 .photo-strip-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -445,6 +504,7 @@ h1, h2, h3, h4 {
 .photo-item {
   position: relative;
   background-color: var(--secondary-color);
+  border: 1px solid var(--border-color);
   border-radius: var(--radius);
   overflow: hidden;
 }
@@ -465,13 +525,12 @@ h1, h2, h3, h4 {
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: rgba(44, 38, 35, 0.75);
-  color: #FAF8F5;
+  background-color: rgba(32, 22, 17, 0.85);
+  color: var(--text-color);
   font-size: 0.82rem;
   padding: 8px 12px;
 }
 
-/* Uneven sizes & aspect ratios */
 .photo-large {
   aspect-ratio: 16 / 10;
 }
@@ -531,10 +590,15 @@ h1, h2, h3, h4 {
 
 
 /* ==========================================================================
-   6. WHAT'S ON / EVENTS
+   5. EVENTS SECTION
    ========================================================================== */
+.events-section {
+  scroll-margin-top: 80px;
+}
+
 .events-card {
   background-color: var(--secondary-color);
+  border: 1px solid var(--border-color);
   padding: 30px 24px;
   border-radius: var(--radius);
   border-left: 4px solid var(--accent-color);
@@ -573,8 +637,12 @@ h1, h2, h3, h4 {
 
 
 /* ==========================================================================
-   7. FIND US & CONTACT
+   6. CONTACT SECTION
    ========================================================================== */
+.findus-section {
+  scroll-margin-top: 80px;
+}
+
 .findus-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -632,6 +700,7 @@ h1, h2, h3, h4 {
   width: 100%;
   min-height: 320px;
   border-radius: var(--radius);
+  border: 1px solid var(--border-color);
   overflow: hidden;
   background-color: var(--secondary-color);
 }
@@ -644,12 +713,12 @@ h1, h2, h3, h4 {
 
 
 /* ==========================================================================
-   8. FOOTER
+   FOOTER
    ========================================================================== */
 .footer {
   background-color: var(--secondary-color);
   padding: 36px 0;
-  border-top: 1px solid rgba(44, 38, 35, 0.1);
+  border-top: 1px solid var(--border-color);
 }
 
 .footer-inner {
@@ -708,12 +777,12 @@ h1, h2, h3, h4 {
   width: calc(100% - 32px);
   max-width: 400px;
   background-color: var(--accent-color);
-  color: var(--bg-color);
+  color: #FFFFFF;
   padding: 14px 20px;
   border-radius: 50px;
   font-weight: 700;
   font-size: 1rem;
-  box-shadow: 0 4px 16px rgba(44, 38, 35, 0.25);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
   transition: transform 0.2s ease;
 }
 
