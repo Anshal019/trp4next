@@ -489,15 +489,10 @@ h1, h2, h3, h4 {
   gap: 16px;
 }
 
-@media (min-width: 580px) {
+@media (min-width: 768px) {
   .photo-strip-grid {
     grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 900px) {
-  .photo-strip-grid {
-    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
   }
 }
 
@@ -527,12 +522,12 @@ h1, h2, h3, h4 {
   right: 0;
   background-color: rgba(32, 22, 17, 0.85);
   color: var(--text-color);
-  font-size: 0.82rem;
-  padding: 8px 12px;
+  font-size: 0.85rem;
+  padding: 10px 14px;
 }
 
 .photo-large {
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 16 / 9;
 }
 
 .photo-medium {
@@ -540,7 +535,7 @@ h1, h2, h3, h4 {
 }
 
 .photo-tall {
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 4 / 5;
 }
 
 .photo-square {
@@ -551,14 +546,14 @@ h1, h2, h3, h4 {
   aspect-ratio: 16 / 9;
 }
 
-@media (min-width: 900px) {
+@media (min-width: 768px) {
   .photo-large {
     grid-column: span 2;
-    aspect-ratio: 16 / 9;
+    aspect-ratio: 21 / 9;
   }
   .photo-wide {
     grid-column: span 2;
-    aspect-ratio: 16 / 8;
+    aspect-ratio: 21 / 9;
   }
 }
 
@@ -590,49 +585,558 @@ h1, h2, h3, h4 {
 
 
 /* ==========================================================================
-   5. EVENTS SECTION
+   5. EVENTS SECTION & DIRECT CALL BOOKINGS
    ========================================================================== */
 .events-section {
   scroll-margin-top: 80px;
 }
 
-.events-card {
+.events-header {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+@media (min-width: 768px) {
+  .events-header {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+}
+
+.event-hotline-badge {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 4px;
+  background: linear-gradient(135deg, #2B2019 0%, #3D2E24 100%);
+  border: 1px solid var(--accent-color);
+  padding: 10px 16px;
+  border-radius: var(--radius);
+  align-self: flex-start;
+}
+
+.hotline-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent-color);
+  font-weight: 600;
+}
+
+.hotline-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  transition: color 0.2s ease;
+}
+
+.hotline-link:hover {
+  color: var(--accent-color);
+}
+
+.events-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+@media (min-width: 640px) {
+  .events-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .events-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+  }
+}
+
+.event-card {
   background-color: var(--secondary-color);
   border: 1px solid var(--border-color);
-  padding: 30px 24px;
   border-radius: var(--radius);
-  border-left: 4px solid var(--accent-color);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
 
-@media (min-width: 768px) {
-  .events-card {
-    padding: 44px 40px;
-  }
+.event-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+  border-color: var(--accent-color);
 }
 
-.events-tag {
-  font-family: var(--font-heading);
+.event-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+}
+
+.event-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.event-card:hover .event-image-wrapper img {
+  transform: scale(1.06);
+}
+
+.event-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background-color: var(--accent-color);
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-size: 0.85rem;
-  color: var(--accent-color);
-  margin-bottom: 8px;
+  letter-spacing: 0.05em;
+  padding: 5px 12px;
+  border-radius: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
 }
 
-.events-title {
-  font-size: 1.6rem;
-  margin-bottom: 14px;
+.event-price-tag {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background-color: rgba(32, 22, 17, 0.9);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 20px;
+  backdrop-filter: blur(4px);
+}
+
+.event-content {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.event-card-title {
+  font-size: 1.35rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--text-color);
+  font-family: var(--font-heading);
+}
+
+.event-card-desc {
+  font-size: 0.93rem;
+  line-height: 1.55;
+  opacity: 0.88;
+  margin-bottom: 16px;
+}
+
+.event-details-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px dashed var(--border-color);
+}
+
+.detail-pill {
+  font-size: 0.82rem;
+  background-color: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-color);
+  padding: 4px 10px;
+  border-radius: 6px;
+  opacity: 0.9;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.event-highlights-preview {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 20px;
+  flex-grow: 1;
+}
+
+.highlight-tag {
+  font-size: 0.78rem;
+  background-color: rgba(217, 119, 54, 0.12);
+  color: var(--accent-color);
+  border: 1px solid rgba(217, 119, 54, 0.3);
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.event-card-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: auto;
+}
+
+.btn-event-call {
+  flex: 1;
+  font-size: 0.9rem;
+  padding: 10px 14px;
+}
+
+.btn-event-details {
+  font-size: 0.88rem;
+  padding: 10px 14px;
+  white-space: nowrap;
+}
+
+/* Direct Call Banner at bottom of Events Section */
+.events-direct-call-banner {
+  margin-top: 40px;
+  background: linear-gradient(135deg, #2B2019 0%, #3D2E24 100%);
+  border: 1px solid var(--accent-color);
+  border-radius: var(--radius);
+  padding: 24px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: flex-start;
 }
 
 @media (min-width: 768px) {
-  .events-title {
-    font-size: 2.1rem;
+  .events-direct-call-banner {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
   }
 }
 
-.events-desc {
-  font-size: 1.05rem;
+.events-direct-call-banner .banner-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background-color: var(--accent-color);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.events-direct-call-banner .banner-content {
+  flex: 1;
+}
+
+.events-direct-call-banner .banner-content h3 {
+  font-size: 1.25rem;
+  margin-bottom: 4px;
+}
+
+.events-direct-call-banner .banner-content p {
+  font-size: 0.92rem;
+  opacity: 0.85;
+}
+
+
+/* ==========================================================================
+   EVENT DETAILS & DIRECT CALL BOOKING MODAL
+   ========================================================================== */
+.event-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(18, 12, 9, 0.85);
+  backdrop-filter: blur(8px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.event-modal-overlay.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.event-modal-container {
+  background-color: var(--secondary-color);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  max-width: 680px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+  transform: translateY(20px);
+  transition: transform 0.3s ease;
+}
+
+.event-modal-overlay.is-open .event-modal-container {
+  transform: translateY(0);
+}
+
+.event-modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: var(--bg-color);
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  font-size: 1.4rem;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease;
+}
+
+.event-modal-close:hover {
+  background-color: var(--accent-color);
+  color: #FFFFFF;
+}
+
+.event-modal-header {
+  padding: 28px 28px 16px 28px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.modal-badge-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.modal-badge-row .event-badge,
+.modal-badge-row .event-price-tag {
+  position: static;
+}
+
+.modal-title {
+  font-size: 1.75rem;
+  margin-bottom: 4px;
+}
+
+.modal-subtitle {
+  font-size: 0.95rem;
+  opacity: 0.85;
+  color: var(--accent-color);
+}
+
+.event-modal-body {
+  padding: 24px 28px 28px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.modal-image-wrapper {
+  width: 100%;
+  height: 240px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}
+
+.modal-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.modal-meta-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+@media (min-width: 480px) {
+  .modal-meta-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.modal-meta-card {
+  background-color: var(--bg-color);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.meta-card-icon {
+  font-size: 1.4rem;
+}
+
+.modal-meta-card strong {
+  display: block;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  opacity: 0.7;
+}
+
+.modal-meta-card p {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.modal-section-block h3 {
+  font-size: 1.15rem;
+  margin-bottom: 10px;
+  color: var(--text-color);
+  border-bottom: 2px solid var(--accent-color);
+  display: inline-block;
+  padding-bottom: 2px;
+}
+
+.modal-desc-text {
+  font-size: 0.96rem;
+  line-height: 1.6;
   opacity: 0.9;
+}
+
+.modal-highlights-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.modal-highlight-chip {
+  background-color: var(--bg-color);
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  padding: 6px 12px;
+  border-radius: var(--radius);
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+/* Modal Direct Call Booking Box */
+.modal-booking-box {
+  background: linear-gradient(135deg, #201611 0%, #2B2019 100%);
+  border: 2px solid var(--accent-color);
+  border-radius: var(--radius);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.booking-box-header {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
+.booking-phone-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: var(--accent-color);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.booking-box-header h3 {
+  font-size: 1.2rem;
+  margin-bottom: 2px;
+}
+
+.booking-box-header p {
+  font-size: 0.86rem;
+  opacity: 0.85;
+}
+
+.booking-phone-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  background-color: rgba(0,0,0,0.2);
+  padding: 10px 14px;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+}
+
+.phone-number-tag {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.phone-label {
+  font-size: 0.85rem;
+  opacity: 0.7;
+}
+
+.phone-val {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--accent-color);
+}
+
+.phone-open-status {
+  font-size: 0.8rem;
+  opacity: 0.9;
+}
+
+.booking-actions-row {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+@media (min-width: 480px) {
+  .booking-actions-row {
+    flex-direction: row;
+  }
+  .modal-call-action,
+  .modal-wa-action {
+    flex: 1;
+  }
+}
+
+.btn-whatsapp {
+  background-color: #25D366;
+  color: #FFFFFF;
+  border-color: #25D366;
+}
+
+.btn-whatsapp:hover {
+  background-color: #20ba5a;
+  border-color: #20ba5a;
 }
 
 
