@@ -1,0 +1,194 @@
+<!-- ==========================================================================
+     TRP4Next Café & Studio — DIGITAL MENU SNIPPET
+     Self-contained, responsive menu section with swipeable image slider,
+     tap-to-zoom modal overlay, and dynamic QR Code with PNG download.
+     Scoped classes: trp-*
+     ========================================================================== -->
+
+<section class="menu-section section-padding" id="menu">
+  <div class="container fade-in">
+    
+    <!-- Section Header -->
+    <div class="menu-header">
+      <span class="trp-badge">Digital Menu</span>
+      <h2 class="section-title">Our Café Menu</h2>
+      <p class="section-sub">Flip through our full food &amp; beverage menu. Tap any page to zoom in full screen.</p>
+    </div>
+
+    <!-- Online Ordering Banner (Above Menu Slider) -->
+    <div class="menu-swiggy-banner">
+      <div class="menu-swiggy-text">
+        <span class="swiggy-pill">⚡ Fast Delivery</span>
+        <p class="menu-swiggy-lead">Craving our wood-fired pizzas, iced brews &amp; bowls at home?</p>
+      </div>
+      <div class="swiggy-order-wrap">
+        <a href="https://www.swiggy.com/city/bhavnagar/trp4next-cafe-studio-near-sbi-training-centre-jawahar-ground-rest1069329" target="_blank" rel="noopener noreferrer" class="btn btn-swiggy btn-large">
+          Order on Swiggy
+        </a>
+        <span class="delivery-note">Delivery available in Bhavnagar</span>
+      </div>
+    </div>
+
+    <!-- Main Layout: 4-Page Slider & QR Code Companion Card -->
+    <div class="trp-menu-layout">
+      
+      <!-- Left Column: Swipeable Menu Slider -->
+      <div class="trp-slider-col">
+        <div class="trp-slider-container" id="trp-slider-container" tabindex="0" aria-label="Menu pages slider" role="region">
+          
+          <!-- Slider Track -->
+          <div class="trp-slider-track" id="trp-slider-track">
+            
+            <!-- Slide 1: Hot Beverages & Chai -->
+            <div class="trp-slide" data-index="0" role="group" aria-roledescription="slide" aria-label="1 of 4: Hot Beverages & Chai">
+              <div class="trp-slide-card" role="button" tabindex="0" aria-label="Zoom Menu Page 1: Hot Beverages & Chai">
+                <div class="trp-zoom-hint">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                  <span>Tap to zoom</span>
+                </div>
+                <img src="images/menu-1.png" alt="TRP Café Menu Page 1: Hot Beverages & Chai" class="trp-slide-img" loading="eager">
+              </div>
+            </div>
+
+            <!-- Slide 2: Soft Drinks & Mocktails -->
+            <div class="trp-slide" data-index="1" role="group" aria-roledescription="slide" aria-label="2 of 4: Soft Drinks & Mocktails">
+              <div class="trp-slide-card" role="button" tabindex="0" aria-label="Zoom Menu Page 2: Soft Drinks & Mocktails">
+                <div class="trp-zoom-hint">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                  <span>Tap to zoom</span>
+                </div>
+                <img src="images/menu-2.png" alt="TRP Café Menu Page 2: Soft Drinks & Mocktails" class="trp-slide-img" loading="lazy">
+              </div>
+            </div>
+
+            <!-- Slide 3: Wood Fired Pizza & Brownie Blitz -->
+            <div class="trp-slide" data-index="2" role="group" aria-roledescription="slide" aria-label="3 of 4: Wood Fired Pizza & Brownie Blitz">
+              <div class="trp-slide-card" role="button" tabindex="0" aria-label="Zoom Menu Page 3: Wood Fired Pizza & Brownie Blitz">
+                <div class="trp-zoom-hint">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                  <span>Tap to zoom</span>
+                </div>
+                <img src="images/menu-3.png" alt="TRP Café Menu Page 3: Wood Fired Pizza & Brownie Blitz" class="trp-slide-img" loading="lazy">
+              </div>
+            </div>
+
+            <!-- Slide 4: Chaat, Rice Bowls & Paratha Combos -->
+            <div class="trp-slide" data-index="3" role="group" aria-roledescription="slide" aria-label="4 of 4: Chaat, Rice Bowls & Paratha Combos">
+              <div class="trp-slide-card" role="button" tabindex="0" aria-label="Zoom Menu Page 4: Chaat, Rice Bowls & Paratha Combos">
+                <div class="trp-zoom-hint">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                  <span>Tap to zoom</span>
+                </div>
+                <img src="images/menu-4.png" alt="TRP Café Menu Page 4: Chaat, Rice Bowls & Paratha Combos" class="trp-slide-img" loading="lazy">
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Slider Previous / Next Arrows -->
+          <button type="button" class="trp-slider-btn trp-prev-btn" id="trp-prev-btn" aria-label="Previous menu page">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <button type="button" class="trp-slider-btn trp-next-btn" id="trp-next-btn" aria-label="Next menu page">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+
+        <!-- Slider Status & Navigation Bar -->
+        <div class="trp-slider-footer">
+          <!-- Dots Indicator -->
+          <div class="trp-dots" id="trp-dots" role="tablist" aria-label="Menu page navigation">
+            <button type="button" class="trp-dot trp-active" role="tab" aria-selected="true" aria-label="Go to page 1" data-index="0"></button>
+            <button type="button" class="trp-dot" role="tab" aria-selected="false" aria-label="Go to page 2" data-index="1"></button>
+            <button type="button" class="trp-dot" role="tab" aria-selected="false" aria-label="Go to page 3" data-index="2"></button>
+            <button type="button" class="trp-dot" role="tab" aria-selected="false" aria-label="Go to page 4" data-index="3"></button>
+          </div>
+
+          <!-- Page Counter (1 / 4) -->
+          <div class="trp-page-counter" id="trp-page-counter" aria-live="polite">
+            <span id="trp-current-num">1</span> / <span id="trp-total-num">4</span>
+          </div>
+
+          <!-- Mobile Swipe Hint -->
+          <div class="trp-swipe-hint">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8L22 12L18 16"/><path d="M6 8L2 12L6 16"/><line x1="2" y1="12" x2="22" y2="12"/></svg>
+            <span>Swipe or click arrows</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: QR Code Companion Card -->
+      <div class="trp-qr-col">
+        <div class="trp-qr-card">
+          <div class="trp-qr-header">
+            <div class="trp-qr-badge-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            </div>
+            <div>
+              <h3 class="trp-qr-title">Instant Mobile Menu</h3>
+              <p class="trp-qr-subtitle">Scan to open on your phone</p>
+            </div>
+          </div>
+
+          <!-- QR Code Canvas / Img Container -->
+          <div class="trp-qr-box-wrap">
+            <div class="trp-qr-frame">
+              <div id="trp-qrcode" class="trp-qrcode" aria-label="QR Code linking directly to this website's menu section"></div>
+            </div>
+            <div class="trp-qr-url-badge">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+              <span id="trp-qr-target-text">Points to this site + #menu</span>
+            </div>
+          </div>
+
+          <p class="trp-qr-desc">
+            Place this QR at tables or share with friends. Scanning opens this website and scrolls directly to the menu section.
+          </p>
+
+          <!-- Download QR Button -->
+          <div class="trp-qr-actions">
+            <button type="button" class="btn btn-accent trp-qr-download-btn" id="trp-download-qr-btn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Download QR Code (PNG)
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ==========================================================================
+     LIGHTBOX / ZOOM OVERLAY (Inside the same page, no new window or tab)
+     ========================================================================== -->
+<div class="trp-lightbox" id="trp-lightbox" role="dialog" aria-modal="true" aria-label="Menu Page Zoom Overlay" aria-hidden="true">
+  <div class="trp-lightbox-backdrop" id="trp-lightbox-backdrop"></div>
+  <div class="trp-lightbox-dialog">
+    <div class="trp-lightbox-header">
+      <div class="trp-lightbox-title" id="trp-lightbox-title">Menu Page 1 of 4</div>
+      <button type="button" class="trp-lightbox-close" id="trp-lightbox-close" aria-label="Close zoomed view (Esc)">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+
+    <div class="trp-lightbox-body">
+      <button type="button" class="trp-lightbox-nav trp-lightbox-prev" id="trp-lightbox-prev" aria-label="Previous zoomed page">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      
+      <div class="trp-lightbox-image-container" id="trp-lightbox-container">
+        <img src="images/menu-1.png" alt="Zoomed menu page" class="trp-lightbox-img" id="trp-lightbox-img">
+      </div>
+
+      <button type="button" class="trp-lightbox-nav trp-lightbox-next" id="trp-lightbox-next" aria-label="Next zoomed page">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+    </div>
+
+    <div class="trp-lightbox-footer">
+      <span class="trp-lightbox-hint">Tap backdrop or press <kbd>Esc</kbd> to close &bull; Use <kbd>&larr;</kbd> <kbd>&rarr;</kbd> arrows to flip pages</span>
+    </div>
+  </div>
+</div>

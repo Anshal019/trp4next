@@ -16,11 +16,61 @@
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   
   <link rel="stylesheet" href="style.css">
+
+  <!-- Schema.org Restaurant & LocalBusiness JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "TRP4Next Café & Studio",
+    "image": "images/real-courtyard-waterfall.jpg",
+    "@id": "https://trp4next.com/#restaurant",
+    "url": "https://trp4next.com",
+    "telephone": "+919426212345",
+    "priceRange": "₹₹",
+    "menu": "https://trp4next.com/#menu",
+    "servesCuisine": ["Wood-Fired Pizza", "Coffee", "Mocktails", "Snacks", "Beverages"],
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Plot No 2288, Hill Drive, near SBI Training Centre, near Poojara Telecom",
+      "addressLocality": "Bhavnagar",
+      "addressRegion": "Gujarat",
+      "postalCode": "364002",
+      "addressCountry": "IN"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 21.7645,
+      "longitude": 72.1519
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday"
+        ],
+        "opens": "16:00",
+        "closes": "23:30"
+      }
+    ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.4",
+      "reviewCount": "1100"
+    }
+  }
+  </script>
 </head>
 <body>
 
   <!-- ==========================================================================
-       TOP BAR & NAVIGATION (Home, About, Menu, Gallery, Events, Contact)
+       TOP BAR & NAVIGATION (Home, About, Menu, Gallery, Events, Reviews, Contact)
        ========================================================================== -->
   <header class="top-bar">
     <div class="container top-bar-inner">
@@ -35,6 +85,7 @@
         <a href="#menu" class="nav-link">Menu</a>
         <a href="#gallery" class="nav-link">Gallery</a>
         <a href="#events" class="nav-link">Events</a>
+        <a href="#reviews" class="nav-link">Reviews</a>
         <a href="#contact" class="nav-link">Contact</a>
       </nav>
 
@@ -59,34 +110,37 @@
        SECTION 1: HOME (HERO)
        ========================================================================== -->
   <section class="hero-section" id="home">
-    <div class="container">
-      <div class="hero-card fade-in">
-        <!-- HERO PHOTO: Real photo of TRP4Next Cafe courtyard -->
-        <div class="hero-image-wrapper">
-          <img src="images/real-courtyard-waterfall.jpg" alt="TRP4Next Cafe outdoor seating and illuminated waterfall on Hill Drive, Bhavnagar" class="hero-img" loading="eager">
-        </div>
-        
-        <div class="hero-content">
-          <div class="rating-badge">
-            <span class="star-rating">★ 4.4</span>
-            <span class="rating-count">on Google (1,100+ local reviews)</span>
+    <div class="hero-bg-overlay"></div>
+    <div class="container hero-container">
+      <div class="hero-content-fullscreen fade-in">
+        <a href="#reviews" class="rating-badge" aria-label="View Google Reviews">
+          <span class="star-rating">★ 4.4</span>
+          <span class="rating-count">on Google (1,100+ local reviews)</span>
+        </a>
+
+        <h1 class="hero-title">TRP4Next Café &amp; Studio</h1>
+        <p class="hero-tagline">Wood-fire pizza, fresh coffee &amp; easy evenings on Hill Drive, Bhavnagar.</p>
+
+        <div class="hero-buttons">
+          <!-- Main Call to Reserve Button -->
+          <a href="tel:+919426212345" class="btn btn-accent btn-large hero-call-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Call to Reserve
+          </a>
+
+          <!-- Swiggy Order Button -->
+          <div class="swiggy-order-wrap">
+            <a href="https://www.swiggy.com/city/bhavnagar/trp4next-cafe-studio-near-sbi-training-centre-jawahar-ground-rest1069329" target="_blank" rel="noopener noreferrer" class="btn btn-swiggy btn-large">
+              Order on Swiggy
+            </a>
+            <span class="delivery-note">Delivery available in Bhavnagar</span>
           </div>
 
-          <h1 class="hero-title">TRP4Next Café & Studio</h1>
-          <p class="hero-tagline">Wood-fire pizza, fresh coffee & easy evenings on Hill Drive, Bhavnagar.</p>
-
-          <div class="hero-buttons">
-            <!-- EDIT PHONE NUMBER HERE -->
-            <a href="tel:+919426212345" class="btn btn-accent btn-large">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-              Call to Reserve
-            </a>
-            <!-- EDIT DIRECTIONS LINK HERE -->
-            <a href="https://maps.google.com/?q=Plot+No+2288+Hill+Drive+Bhavnagar+364002" target="_blank" rel="noopener" class="btn btn-outline btn-large">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              Directions
-            </a>
-          </div>
+          <!-- Directions Link -->
+          <a href="https://maps.google.com/?q=Plot+No+2288+Hill+Drive+Bhavnagar+364002" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-large">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Directions
+          </a>
         </div>
       </div>
     </div>
@@ -120,202 +174,193 @@
 
 
   <!-- ==========================================================================
-       SECTION 3: MENU
+       SECTION 3: DIGITAL MENU (4-Page Slider & Instant Mobile QR Code)
        ========================================================================== -->
   <section class="menu-section section-padding" id="menu">
     <div class="container fade-in">
+      
+      <!-- Section Header -->
       <div class="menu-header">
-        <h2 class="section-title">What We Make</h2>
-        <p class="section-sub">Freshly baked wood-fire pizzas, loaded snacks, cold brews & sweet endings.</p>
+        <span class="trp-badge">Digital Menu</span>
+        <h2 class="section-title">Our Café Menu</h2>
+        <p class="section-sub">Flip through our full food &amp; beverage menu. Tap any page to zoom in full screen.</p>
       </div>
 
-      <!-- EDIT MENU BELOW: You can add, edit, or remove menu items and prices -->
-      <div class="menu-grid">
+      <!-- Online Ordering Banner (Above Menu Slider) -->
+      <div class="menu-swiggy-banner">
+        <div class="menu-swiggy-text">
+          <span class="swiggy-tag">⚡ Fast Delivery</span>
+          <p class="menu-swiggy-lead">Craving our wood-fired pizzas, iced brews &amp; bowls at home?</p>
+        </div>
+        <div class="swiggy-order-wrap">
+          <a href="https://www.swiggy.com/city/bhavnagar/trp4next-cafe-studio-near-sbi-training-centre-jawahar-ground-rest1069329" target="_blank" rel="noopener noreferrer" class="btn btn-swiggy btn-large">
+            Order on Swiggy
+          </a>
+          <span class="delivery-note">Delivery available in Bhavnagar</span>
+        </div>
+      </div>
+
+      <!-- Main Layout: 4-Page Slider & QR Code Companion Card -->
+      <div class="trp-menu-layout">
         
-        <!-- Category 1: Wood-Fire Pizza -->
-        <div class="menu-category">
-          <h3 class="category-title">Wood-Fire Pizza</h3>
-          
-          <ul class="menu-list">
-            <li class="menu-item">
-              <div class="menu-item-header">
-                <span class="item-name">Margherita Basil</span>
-                <span class="item-dots"></span>
-                <span class="item-price">₹280</span>
+        <!-- Left Column: Swipeable Menu Slider -->
+        <div class="trp-slider-col">
+          <div class="trp-slider-container" id="trp-slider-container" tabindex="0" aria-label="Menu pages slider" role="region">
+            
+            <!-- Slider Track -->
+            <div class="trp-slider-track" id="trp-slider-track">
+              
+              <!-- Slide 1: Hot Beverages & Chai -->
+              <div class="trp-slide" data-index="0" role="group" aria-roledescription="slide" aria-label="1 of 4: Hot Beverages &amp; Chai">
+                <div class="trp-slide-card" role="button" tabindex="0" aria-label="Zoom Menu Page 1: Hot Beverages &amp; Chai">
+                  <div class="trp-zoom-hint">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                    <span>Tap to zoom</span>
+                  </div>
+                  <img src="images/menu-1.png" alt="TRP Café Menu Page 1: Hot Beverages &amp; Chai" class="trp-slide-img" loading="eager">
+                </div>
               </div>
-              <p class="item-desc">Classic hand-stretched crust, fresh tomato sauce, mozzarella & aromatic basil leaves.</p>
-            </li>
 
-            <li class="menu-item">
-              <div class="menu-item-header">
-                <span class="item-name">Spicy Peri-Peri Veggie</span>
-                <span class="item-dots"></span>
-                <span class="item-price">₹320</span>
+              <!-- Slide 2: Soft Drinks & Mocktails -->
+              <div class="trp-slide" data-index="1" role="group" aria-roledescription="slide" aria-label="2 of 4: Soft Drinks &amp; Mocktails">
+                <div class="trp-slide-card" role="button" tabindex="0" aria-label="Zoom Menu Page 2: Soft Drinks &amp; Mocktails">
+                  <div class="trp-zoom-hint">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                    <span>Tap to zoom</span>
+                  </div>
+                  <img src="images/menu-2.png" alt="TRP Café Menu Page 2: Soft Drinks &amp; Mocktails" class="trp-slide-img" loading="lazy">
+                </div>
               </div>
-              <p class="item-desc">Bell peppers, sweetcorn, jalapenos, onions & spicy house peri-peri drizzle.</p>
-            </li>
 
-            <li class="menu-item">
-              <div class="menu-item-header">
-                <span class="item-name">Truffle Mushroom & Cheese</span>
-                <span class="item-dots"></span>
-                <span class="item-price">₹360</span>
+              <!-- Slide 3: Wood Fired Pizza & Brownie Blitz -->
+              <div class="trp-slide" data-index="2" role="group" aria-roledescription="slide" aria-label="3 of 4: Wood Fired Pizza &amp; Brownie Blitz">
+                <div class="trp-slide-card" role="button" tabindex="0" aria-label="Zoom Menu Page 3: Wood Fired Pizza &amp; Brownie Blitz">
+                  <div class="trp-zoom-hint">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                    <span>Tap to zoom</span>
+                  </div>
+                  <img src="images/menu-3.png" alt="TRP Café Menu Page 3: Wood Fired Pizza &amp; Brownie Blitz" class="trp-slide-img" loading="lazy">
+                </div>
               </div>
-              <p class="item-desc">Sautéed mushrooms, caramelized onions, garlic butter & truffle oil fragrance.</p>
-            </li>
 
-            <li class="menu-item">
-              <div class="menu-item-header">
-                <span class="item-name">Four-Cheese Rustic Special</span>
-                <span class="item-dots"></span>
-                <span class="item-price">₹380</span>
+              <!-- Slide 4: Chaat, Rice Bowls & Paratha Combos -->
+              <div class="trp-slide" data-index="3" role="group" aria-roledescription="slide" aria-label="4 of 4: Chaat, Rice Bowls &amp; Paratha Combos">
+                <div class="trp-slide-card" role="button" tabindex="0" aria-label="Zoom Menu Page 4: Chaat, Rice Bowls &amp; Paratha Combos">
+                  <div class="trp-zoom-hint">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                    <span>Tap to zoom</span>
+                  </div>
+                  <img src="images/menu-4.png" alt="TRP Café Menu Page 4: Chaat, Rice Bowls &amp; Paratha Combos" class="trp-slide-img" loading="lazy">
+                </div>
               </div>
-              <p class="item-desc">Mozzarella, cheddar, gouda & creamy feta blend baked in our clay oven.</p>
-            </li>
-          </ul>
+
+            </div>
+
+            <!-- Slider Previous / Next Arrows -->
+            <button type="button" class="trp-slider-btn trp-prev-btn" id="trp-prev-btn" aria-label="Previous menu page">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
+            <button type="button" class="trp-slider-btn trp-next-btn" id="trp-next-btn" aria-label="Next menu page">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+          </div>
+
+          <!-- Slider Status & Navigation Bar -->
+          <div class="trp-slider-footer">
+            <!-- Dots Indicator -->
+            <div class="trp-dots" id="trp-dots" role="tablist" aria-label="Menu page navigation">
+              <button type="button" class="trp-dot trp-active" role="tab" aria-selected="true" aria-label="Go to page 1" data-index="0"></button>
+              <button type="button" class="trp-dot" role="tab" aria-selected="false" aria-label="Go to page 2" data-index="1"></button>
+              <button type="button" class="trp-dot" role="tab" aria-selected="false" aria-label="Go to page 3" data-index="2"></button>
+              <button type="button" class="trp-dot" role="tab" aria-selected="false" aria-label="Go to page 4" data-index="3"></button>
+            </div>
+
+            <!-- Page Counter (1 / 4) -->
+            <div class="trp-page-counter" id="trp-page-counter" aria-live="polite">
+              <span id="trp-current-num">1</span> / <span id="trp-total-num">4</span>
+            </div>
+
+            <!-- Mobile Swipe Hint -->
+            <div class="trp-swipe-hint">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8L22 12L18 16"/><path d="M6 8L2 12L6 16"/><line x1="2" y1="12" x2="22" y2="12"/></svg>
+              <span>Swipe or click arrows</span>
+            </div>
+          </div>
         </div>
 
-        <!-- Category 2: Starters & Nachos -->
-        <div class="menu-category">
-          <h3 class="category-title">Starters & Nachos</h3>
-          
-          <ul class="menu-list">
-            <li class="menu-item">
-              <div class="menu-item-header">
-                <span class="item-name">TRP House Loaded Nachos</span>
-                <span class="item-dots"></span>
-                <span class="item-price">₹240</span>
+        <!-- Right Column: QR Code Companion Card -->
+        <div class="trp-qr-col">
+          <div class="trp-qr-card">
+            <div class="trp-qr-header">
+              <div class="trp-qr-badge-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
               </div>
-              <p class="item-desc">Crispy corn tortilla chips topped with melted cheese, fresh salsa, jalapenos & dip.</p>
-            </li>
-
-            <li class="menu-item">
-              <div class="menu-item-header">
-                <span class="item-name">Chipotle Bean Nachos</span>
-                <span class="item-dots"></span>
-                <span class="item-price">₹260</span>
+              <div>
+                <h3 class="trp-qr-title">Instant Mobile Menu</h3>
+                <p class="trp-qr-subtitle">Scan to open on your phone</p>
               </div>
-              <p class="item-desc">Smoky chipotle beans, queso dip, sour cream swirl & homemade guacamole.</p>
-            </li>
+            </div>
 
-            <li class="menu-item">
-              <div class="menu-item-header">
-                <span class="item-name">Garlic Butter Herb Crusts</span>
-                <span class="item-dots"></span>
-                <span class="item-price">₹180</span>
+            <!-- QR Code Canvas / Img Container -->
+            <div class="trp-qr-box-wrap">
+              <div class="trp-qr-frame">
+                <div id="trp-qrcode" class="trp-qrcode" aria-label="QR Code linking directly to this website's menu section"></div>
               </div>
-              <p class="item-desc">Toasted artisanal sourdough slice brush-baked with garlic, parsley & melted cheese.</p>
-            </li>
-
-
-          </ul>
-        </div>
-
-        <!-- Category 3: Sandwiches & Wraps -->
-        <div class="menu-category">
-          <h3 class="category-title">Wraps & Sandwiches</h3>
-          
-          <ul class="menu-list">
-            <li class="menu-item">
-              <div class="menu-item-header">
-                <span class="item-name">Panini Grilled Veg Cheese</span>
-                <span class="item-dots"></span>
-                <span class="item-price">₹210</span>
+              <div class="trp-qr-url-badge">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                <span id="trp-qr-target-text">Points to this site #menu</span>
               </div>
-              <p class="item-desc">Pressed ciabatta bread filled with grilled veggies, pesto spread & melted cheese.</p>
-            </li>
+            </div>
 
-            <li class="menu-item">
-              <div class="menu-item-header">
-                <span class="item-name">Smoky Paneer Tikka Wrap</span>
-                <span class="item-dots"></span>
-                <span class="item-price">₹230</span>
-              </div>
-              <p class="item-desc">Clay-oven marinated paneer cubes, mint chutney, sliced onions rolled in tortilla.</p>
-            </li>
+            <p class="trp-qr-desc">
+              Place this QR at tables or share with friends. Scanning opens this website and scrolls directly to the menu section.
+            </p>
 
-            <li class="menu-item">
-              <div class="menu-item-header">
-                <span class="item-name">Garden Pesto Club Sandwich</span>
-                <span class="item-dots"></span>
-                <span class="item-price">₹220</span>
-              </div>
-              <p class="item-desc">Triple decker toasted sandwich loaded with avocado, lettuce, tomato & herb mayo.</p>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Category 4: Coffee & Beverages -->
-        <div class="menu-category">
-          <h3 class="category-title">Coffee & Drinks</h3>
-          
-          <ul class="menu-list">
-            <li class="menu-item">
-              <div class="menu-item-header">
-                <span class="item-name">Iced Classic Espresso Latte</span>
-                <span class="item-dots"></span>
-                <span class="item-price">₹160</span>
-              </div>
-              <p class="item-desc">Double espresso shot poured over chilled milk & ice blocks.</p>
-            </li>
-
-            <li class="menu-item">
-              <div class="menu-item-header">
-                <span class="item-name">Hazelnut Cold Brew</span>
-                <span class="item-dots"></span>
-                <span class="item-price">₹190</span>
-              </div>
-              <p class="item-desc">Slow-steeped 16-hour dark cold brew infused with hazelnut syrup.</p>
-            </li>
-
-            <li class="menu-item">
-              <div class="menu-item-header">
-                <span class="item-name">Dark Chocolate Fudge Shake</span>
-                <span class="item-dots"></span>
-                <span class="item-price">₹210</span>
-              </div>
-              <p class="item-desc">Rich cocoa, dark chocolate fudge, ice cream blended thick.</p>
-            </li>
-
-            <li class="menu-item">
-              <div class="menu-item-header">
-                <span class="item-name">Mint Lime Cold Cooler</span>
-                <span class="item-dots"></span>
-                <span class="item-price">₹150</span>
-              </div>
-              <p class="item-desc">Freshly crushed mint leaves, key lime, sea salt & sparkling soda.</p>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Category 5: Desserts -->
-        <div class="menu-category">
-          <h3 class="category-title">Desserts</h3>
-          
-          <ul class="menu-list">
-            <li class="menu-item">
-              <div class="menu-item-header">
-                <span class="item-name">Sizzling Chocolate Lava Cake</span>
-                <span class="item-dots"></span>
-                <span class="item-price">₹220</span>
-              </div>
-              <p class="item-desc">Warm chocolate cake with molten fudge centre, served with vanilla bean ice cream.</p>
-            </li>
-
-            <li class="menu-item">
-              <div class="menu-item-header">
-                <span class="item-name">Warm Apple Pie & Ice Cream</span>
-                <span class="item-dots"></span>
-                <span class="item-price">₹240</span>
-              </div>
-              <p class="item-desc">Cinnamon spiced apple filling in flaky butter crust with salted caramel drizzle.</p>
-            </li>
-          </ul>
+            <!-- Download QR Button -->
+            <div class="trp-qr-actions">
+              <button type="button" class="btn btn-accent trp-qr-download-btn" id="trp-download-qr-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Download QR Code (PNG)
+              </button>
+            </div>
+          </div>
         </div>
 
       </div>
+
     </div>
   </section>
+
+  <!-- Lightbox / Zoom Overlay (Inside page, same tab, no new window) -->
+  <div class="trp-lightbox" id="trp-lightbox" role="dialog" aria-modal="true" aria-label="Menu Page Zoom Overlay" aria-hidden="true">
+    <div class="trp-lightbox-backdrop" id="trp-lightbox-backdrop"></div>
+    <div class="trp-lightbox-dialog">
+      <div class="trp-lightbox-header">
+        <div class="trp-lightbox-title" id="trp-lightbox-title">Menu Page 1 of 4</div>
+        <button type="button" class="trp-lightbox-close" id="trp-lightbox-close" aria-label="Close zoomed view (Esc)">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+
+      <div class="trp-lightbox-body">
+        <button type="button" class="trp-lightbox-nav trp-lightbox-prev" id="trp-lightbox-prev" aria-label="Previous zoomed page">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        
+        <div class="trp-lightbox-image-container" id="trp-lightbox-container">
+          <img src="images/menu-1.png" alt="Zoomed menu page" class="trp-lightbox-img" id="trp-lightbox-img">
+        </div>
+
+        <button type="button" class="trp-lightbox-nav trp-lightbox-next" id="trp-lightbox-next" aria-label="Next zoomed page">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+
+      <div class="trp-lightbox-footer">
+        <span class="trp-lightbox-hint">Tap backdrop or press <kbd>Esc</kbd> to close &bull; Use <kbd>&larr;</kbd> <kbd>&rarr;</kbd> arrows to flip pages</span>
+      </div>
+    </div>
+  </div>
 
 
   <!-- ==========================================================================
@@ -541,7 +586,89 @@
 
 
   <!-- ==========================================================================
-       SECTION 6: CONTACT & FIND US
+       SECTION 6: REVIEWS & GOOGLE RATINGS
+       ========================================================================== -->
+  <section class="reviews-section section-padding" id="reviews">
+    <div class="container fade-in">
+      
+      <div class="reviews-header">
+        <span class="section-label">Guest Feedback</span>
+        <h2 class="section-title">Loved by Bhavnagar</h2>
+        <p class="section-sub">Over 1,100+ five-star reviews on Google. Real words from our local guests.</p>
+
+        <!-- Google Rating & Two Action Buttons -->
+        <div class="reviews-rating-bar">
+          <div class="rating-bar-score">
+            <span class="score-num">4.4</span>
+            <div class="score-stars-wrap">
+              <span class="score-stars">★★★★★</span>
+              <span class="score-text">1,100+ Google Reviews</span>
+            </div>
+          </div>
+          
+          <div class="reviews-actions">
+            <!-- Button 1: See all reviews on Google -->
+            <a href="https://search.google.com/local/reviews?placeid=ChIJEaheW5FbXzkR6YhyDvPVZaU" target="_blank" rel="noopener noreferrer" class="btn btn-google-outline">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              See all reviews on Google
+            </a>
+            <!-- Button 2: Write a review -->
+            <a href="https://search.google.com/local/writereview?placeid=ChIJEaheW5FbXzkR6YhyDvPVZaU" target="_blank" rel="noopener noreferrer" class="btn btn-google-accent">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+              Write a review
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Verified Review Cards Grid -->
+      <div class="reviews-grid">
+        <div class="review-card">
+          <div class="review-card-top">
+            <div class="reviewer-avatar">R</div>
+            <div>
+              <h4 class="reviewer-name">Rajdeep S.</h4>
+              <span class="review-meta">Local Guide &bull; 5 stars</span>
+            </div>
+            <span class="review-stars">★★★★★</span>
+          </div>
+          <p class="review-text">"Hands down the best wood-fired pizza in Bhavnagar! The outdoor courtyard seating by the waterfall is calm and breezy. Perfect place to sit for hours with friends."</p>
+          <span class="review-tag">Wood-Fired Pizza &bull; Courtyard Vibe</span>
+        </div>
+
+        <div class="review-card">
+          <div class="review-card-top">
+            <div class="reviewer-avatar">P</div>
+            <div>
+              <h4 class="reviewer-name">Pooja Patel</h4>
+              <span class="review-meta">Verified Guest &bull; 5 stars</span>
+            </div>
+            <span class="review-stars">★★★★★</span>
+          </div>
+          <p class="review-text">"Super cozy ambiance on Hill Drive. Loved their cold hazelnut brew and sizzling brownie blitz. Plus, they are genuinely pet-friendly! Our dog felt right at home."</p>
+          <span class="review-tag">Pet Friendly &bull; Cold Brew &bull; Brownies</span>
+        </div>
+
+        <div class="review-card">
+          <div class="review-card-top">
+            <div class="reviewer-avatar">A</div>
+            <div>
+              <h4 class="reviewer-name">Amit Mehta</h4>
+              <span class="review-meta">Verified Guest &bull; 5 stars</span>
+            </div>
+            <span class="review-stars">★★★★★</span>
+          </div>
+          <p class="review-text">"Watched the IPL match live on the garden projector screen. Incredible surround sound and stadium atmosphere under open skies. Prompt service and top-notch food!"</p>
+          <span class="review-tag">Big Screen Cricket &bull; Fast Service</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ==========================================================================
+       SECTION 7: CONTACT & FIND US
        ========================================================================== -->
   <section class="findus-section section-padding" id="contact">
     <div class="container fade-in">
@@ -630,13 +757,32 @@
 
 
   <!-- ==========================================================================
-       MOBILE STICKY CALL BUTTON
+       MOBILE STICKY BOTTOM DOCK (Call, WhatsApp, Directions, Swiggy)
        ========================================================================== -->
-  <!-- EDIT PHONE NUMBER HERE FOR MOBILE BUTTON -->
-  <a href="tel:+919426212345" class="mobile-sticky-call" aria-label="Call TRP4Next Cafe">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-    <span>Call Cafe</span>
-  </a>
+  <nav class="mobile-sticky-dock" aria-label="Quick mobile contact and ordering actions">
+    <!-- Call -->
+    <a href="tel:+919426212345" class="sticky-dock-item" aria-label="Call +91 94262 12345">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      <span>Call</span>
+    </a>
+
+    <!-- WhatsApp -->
+    <a href="https://wa.me/919426212345" target="_blank" rel="noopener noreferrer" class="sticky-dock-item" aria-label="WhatsApp Message">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+      <span>WhatsApp</span>
+    </a>
+
+    <!-- Directions -->
+    <a href="https://maps.google.com/?q=Plot+No+2288+Hill+Drive+Bhavnagar+364002" target="_blank" rel="noopener noreferrer" class="sticky-dock-item" aria-label="Directions on Google Maps">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      <span>Directions</span>
+    </a>
+
+    <!-- Swiggy -->
+    <a href="https://www.swiggy.com/city/bhavnagar/trp4next-cafe-studio-near-sbi-training-centre-jawahar-ground-rest1069329" target="_blank" rel="noopener noreferrer" class="sticky-dock-item sticky-dock-swiggy" aria-label="Order on Swiggy">
+      <span>Order on Swiggy</span>
+    </a>
+  </nav>
 
   <!-- ==========================================================================
        EVENT DETAILS & DIRECT CALL BOOKING MODAL
@@ -647,58 +793,61 @@
       
       <div class="event-modal-header">
         <div class="modal-badge-row">
-          <span class="event-badge" id="modalBadge">Weekly Special</span>
-          <span class="event-price-tag" id="modalEntry">Free Entry</span>
+          <span class="event-badge" id="modalBadge">Every Match Day</span>
+          <span class="event-price-tag" id="modalEntry">Free Entry with Table Order</span>
         </div>
-        <h2 class="modal-title" id="modalTitle">Event Title</h2>
-        <p class="modal-subtitle" id="modalSubtitle">Event Subtitle</p>
+        <h2 class="modal-title" id="modalTitle">Live Cricket Match Screenings</h2>
+        <p class="modal-subtitle" id="modalSubtitle">Experience IPL &amp; International T20 Matches Live on the Big Garden Projector</p>
       </div>
       
       <div class="event-modal-body">
         <div class="modal-image-wrapper">
-          <img src="images/real-courtyard-waterfall.jpg" id="modalImage" alt="Event Banner">
+          <img src="images/real-courtyard-waterfall.jpg" id="modalImage" alt="Live Cricket Match Screenings at TRP4Next">
         </div>
         
         <div class="modal-meta-grid">
           <div class="modal-meta-card">
             <span class="meta-card-icon">📅</span>
             <div>
-              <strong>Schedule & Date</strong>
-              <p id="modalSchedule">Saturdays & Sundays</p>
+              <strong>Schedule &amp; Date</strong>
+              <p id="modalSchedule">During all live evening matches</p>
             </div>
           </div>
           <div class="modal-meta-card">
             <span class="meta-card-icon">🕒</span>
             <div>
               <strong>Timings</strong>
-              <p id="modalTime">7:30 PM – 10:30 PM</p>
+              <p id="modalTime">7:00 PM Onwards</p>
             </div>
           </div>
           <div class="modal-meta-card">
             <span class="meta-card-icon">📍</span>
             <div>
               <strong>Location / Spot</strong>
-              <p id="modalLocation">Garden Courtyard & Stage</p>
+              <p id="modalLocation">Outdoor Courtyard Screen &amp; Lawn Seating</p>
             </div>
           </div>
           <div class="modal-meta-card">
             <span class="meta-card-icon">👥</span>
             <div>
-              <strong>Seating & Capacity</strong>
-              <p id="modalCapacity">Tables for 2 to 25+ guests</p>
+              <strong>Seating &amp; Capacity</strong>
+              <p id="modalCapacity">Small &amp; Large Groups (Up to 35 guests)</p>
             </div>
           </div>
         </div>
 
         <div class="modal-section-block">
-          <h3>Overview & What to Expect</h3>
-          <p id="modalFullDesc" class="modal-desc-text">Detailed description here...</p>
+          <h3>Overview &amp; What to Expect</h3>
+          <p id="modalFullDesc" class="modal-desc-text">Cheer for your favorite cricket teams live under open skies! TRP4Next screens all major IPL, World Cup, and T20 matches on our massive outdoor garden projector screen with surround audio. Enjoy hot hand-stretched wood-fired pizzas, loaded nachos, and chilled iced beverages right at your table with your friends and fellow fans.</p>
         </div>
 
         <div class="modal-section-block">
-          <h3>Event Highlights & Special Perks</h3>
+          <h3>Event Highlights &amp; Special Perks</h3>
           <div class="modal-highlights-grid" id="modalHighlights">
-            <!-- Dynamic highlights -->
+            <div class="modal-highlight-card"><span>📽️</span><div><strong>Big Screen Projector</strong><p>Full HD garden display</p></div></div>
+            <div class="modal-highlight-card"><span>🔊</span><div><strong>Surround Audio</strong><p>Stadium atmosphere</p></div></div>
+            <div class="modal-highlight-card"><span>🍿</span><div><strong>Match Pizza Combos</strong><p>Wood-fired specials</p></div></div>
+            <div class="modal-highlight-card"><span>🐾</span><div><strong>Pet Friendly Seating</strong><p>Bring your pets</p></div></div>
           </div>
         </div>
 
@@ -738,6 +887,8 @@
     </div>
   </div>
 
+  <!-- QRCode.js Library from cdnjs (Free, no build step required) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

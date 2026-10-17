@@ -170,7 +170,7 @@ document.addEventListener('DOMContentLoaded', function () {
   var detailBtns = document.querySelectorAll('.btn-event-details');
 
   function openEventModal(eventId) {
-    var data = eventsData[eventId];
+    var data = eventsData[eventId] || eventsData.cricket;
     if (!data) return;
 
     var modalBadge = document.getElementById('modalBadge');
@@ -252,5 +252,374 @@ document.addEventListener('DOMContentLoaded', function () {
       closeEventModal();
     }
   });
+
+
+  /* ==========================================================================
+     5. DIGITAL MENU SLIDER, ZOOM LIGHTBOX & QR CODE (SCOPED)
+     ========================================================================== */
+  (function initTrpMenu() {
+    var sliderContainer = document.getElementById('trp-slider-container');
+    var sliderTrack = document.getElementById('trp-slider-track');
+    if (!sliderContainer || !sliderTrack) return;
+
+    var prevBtn = document.getElementById('trp-prev-btn');
+    var nextBtn = document.getElementById('trp-next-btn');
+    var dots = document.querySelectorAll('.trp-dot');
+    var currentNum = document.getElementById('trp-current-num');
+    var totalNum = document.getElementById('trp-total-num');
+    var slideCards = document.querySelectorAll('.trp-slide-card');
+
+    var lightbox = document.getElementById('trp-lightbox');
+    var lightboxImg = document.getElementById('trp-lightbox-img');
+    var lightboxTitle = document.getElementById('trp-lightbox-title');
+    var lightboxClose = document.getElementById('trp-lightbox-close');
+    var lightboxBackdrop = document.getElementById('trp-lightbox-backdrop');
+    var lightboxPrev = document.getElementById('trp-lightbox-prev');
+    var lightboxNext = document.getElementById('trp-lightbox-next');
+
+    var qrContainer = document.getElementById('trp-qrcode');
+    var qrDownloadBtn = document.getElementById('trp-download-qr-btn');
+    var qrTargetText = document.getElementById('trp-qr-target-text');
+
+    var menuPages = [
+      { title: "Hot Beverages & Chai", src: "images/menu-1.png", alt: "TRP Café Menu Page 1: Hot Beverages & Chai" },
+      { title: "Soft Drinks & Mocktails", src: "images/menu-2.png", alt: "TRP Café Menu Page 2: Soft Drinks & Mocktails" },
+      { title: "Wood Fired Pizza & Brownie Blitz", src: "images/menu-3.png", alt: "TRP Café Menu Page 3: Wood Fired Pizza & Brownie Blitz" },
+      { title: "Chaat, Rice Bowls & Paratha Combos", src: "images/menu-4.png", alt: "TRP Café Menu Page 4: Chaat, Rice Bowls & Paratha Combos" }
+    ];
+
+    var currentIndex = 0;
+    var totalSlides = menuPages.length;
+    var hasDragged = false;
+
+    if (totalNum) {
+      totalNum.textContent = totalSlides;
+    }
+
+    function updateLightboxContent() {
+      if (!lightbox || !lightboxImg || !lightboxTitle) return;
+      var page = menuPages[currentIndex];
+      lightboxImg.src = page.src;
+      lightboxImg.alt = page.alt;
+      lightboxTitle.textContent = 'Menu Page ' + (currentIndex + 1) + ' of ' + totalSlides + ' — ' + page.title;
+    }
+
+    function goToSlide(index) {
+      if (index < 0) {
+        currentIndex = totalSlides - 1;
+      } else if (index >= totalSlides) {
+        currentIndex = 0;
+      } else {
+        currentIndex = index;
+      }
+
+      sliderTrack.style.transform = 'translate3d(-' + (currentIndex * 100) + '%, 0, 0)';
+
+      if (currentNum) {
+        currentNum.textContent = currentIndex + 1;
+      }
+
+      dots.forEach(function (dot, i) {
+        if (i === currentIndex) {
+          dot.classList.add('trp-active');
+          dot.setAttribute('aria-selected', 'true');
+        } else {
+          dot.classList.remove('trp-active');
+          dot.setAttribute('aria-selected', 'false');
+        }
+      });
+
+      if (lightbox && lightbox.classList.contains('trp-open')) {
+        updateLightboxContent();
+      }
+    }
+
+    // Slider Navigation Buttons
+    if (prevBtn) {
+      prevBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        goToSlide(currentIndex - 1);
+      });
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        goToSlide(currentIndex + 1);
+      });
+    }
+
+    // Dots Navigation
+    dots.forEach(function (dot) {
+      dot.addEventListener('click', function () {
+        var idx = parseInt(this.getAttribute('data-index'), 10);
+        if (!isNaN(idx)) {
+          goToSlide(idx);
+        }
+      });
+    });
+
+    // Touch Swipe Support on Slider Container
+    var touchStartX = 0;
+    var touchStartY = 0;
+    var touchDiffX = 0;
+    var touchDiffY = 0;
+
+    sliderContainer.addEventListener('touchstart', function (e) {
+      if (e.touches.length > 1) return;
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+      touchDiffX = 0;
+      touchDiffY = 0;
+      hasDragged = false;
+    }, { passive: true });
+
+    sliderContainer.addEventListener('touchmove', function (e) {
+      if (e.touches.length > 1) return;
+      touchDiffX = e.touches[0].clientX - touchStartX;
+      touchDiffY = e.touches[0].clientY - touchStartY;
+      if (Math.abs(touchDiffX) > 10) {
+        hasDragged = true;
+      }
+    }, { passive: true });
+
+    sliderContainer.addEventListener('touchend', function () {
+      if (Math.abs(touchDiffX) > 40 && Math.abs(touchDiffX) > Math.abs(touchDiffY)) {
+        if (touchDiffX < 0) {
+          goToSlide(currentIndex + 1);
+        } else {
+          goToSlide(currentIndex - 1);
+        }
+      }
+      setTimeout(function () {
+        hasDragged = false;
+      }, 150);
+    });
+
+    // Mouse Drag Support on Desktop
+    var isMouseDown = false;
+    var mouseStartX = 0;
+    var mouseDiffX = 0;
+
+    sliderContainer.addEventListener('mousedown', function (e) {
+      if (e.button !== 0) return;
+      isMouseDown = true;
+      mouseStartX = e.clientX;
+      mouseDiffX = 0;
+      hasDragged = false;
+    });
+
+    window.addEventListener('mousemove', function (e) {
+      if (!isMouseDown) return;
+      mouseDiffX = e.clientX - mouseStartX;
+      if (Math.abs(mouseDiffX) > 10) {
+        hasDragged = true;
+      }
+    });
+
+    window.addEventListener('mouseup', function () {
+      if (!isMouseDown) return;
+      isMouseDown = false;
+      if (hasDragged && Math.abs(mouseDiffX) > 50) {
+        if (mouseDiffX < 0) {
+          goToSlide(currentIndex + 1);
+        } else {
+          goToSlide(currentIndex - 1);
+        }
+      }
+      setTimeout(function () {
+        hasDragged = false;
+      }, 150);
+    });
+
+    // Keyboard Arrow navigation when slider container is focused
+    sliderContainer.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        goToSlide(currentIndex - 1);
+      } else if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        goToSlide(currentIndex + 1);
+      }
+    });
+
+    // Lightbox / Zoom Overlay Functions
+    function openLightbox(index) {
+      goToSlide(index);
+      updateLightboxContent();
+      if (!lightbox) return;
+      lightbox.classList.add('trp-open');
+      lightbox.removeAttribute('hidden');
+      lightbox.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      if (lightboxClose) lightboxClose.focus();
+    }
+
+    function closeLightbox() {
+      if (!lightbox) return;
+      lightbox.classList.remove('trp-open');
+      lightbox.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      setTimeout(function () {
+        if (!lightbox.classList.contains('trp-open')) {
+          lightbox.setAttribute('hidden', '');
+        }
+      }, 250);
+    }
+
+    // Tap/Click on slide cards to zoom
+    slideCards.forEach(function (card) {
+      var slideIndex = parseInt(card.closest('.trp-slide').getAttribute('data-index'), 10);
+      card.addEventListener('click', function (e) {
+        e.preventDefault();
+        if (!hasDragged) {
+          openLightbox(slideIndex);
+        }
+      });
+
+      card.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openLightbox(slideIndex);
+        }
+      });
+    });
+
+    // Lightbox Controls
+    if (lightboxClose) {
+      lightboxClose.addEventListener('click', closeLightbox);
+    }
+
+    if (lightboxBackdrop) {
+      lightboxBackdrop.addEventListener('click', closeLightbox);
+    }
+
+    if (lightboxPrev) {
+      lightboxPrev.addEventListener('click', function (e) {
+        e.stopPropagation();
+        goToSlide(currentIndex - 1);
+      });
+    }
+
+    if (lightboxNext) {
+      lightboxNext.addEventListener('click', function (e) {
+        e.stopPropagation();
+        goToSlide(currentIndex + 1);
+      });
+    }
+
+    // Gallery Tap-to-Zoom Lightbox
+    var galleryPhotos = document.querySelectorAll('.photo-strip-grid .photo-item');
+    galleryPhotos.forEach(function (photoItem) {
+      photoItem.setAttribute('role', 'button');
+      photoItem.setAttribute('tabindex', '0');
+
+      function showGalleryZoom() {
+        var img = photoItem.querySelector('img');
+        var caption = photoItem.querySelector('.photo-caption');
+        if (!img || !lightbox || !lightboxImg || !lightboxTitle) return;
+
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+        lightboxTitle.textContent = caption ? caption.textContent : img.alt;
+
+        lightbox.classList.add('trp-open');
+        lightbox.removeAttribute('hidden');
+        lightbox.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        if (lightboxClose) lightboxClose.focus();
+      }
+
+      photoItem.addEventListener('click', function (e) {
+        e.preventDefault();
+        showGalleryZoom();
+      });
+
+      photoItem.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          showGalleryZoom();
+        }
+      });
+    });
+
+    // Global Key Listener for Lightbox (Esc, Left, Right)
+    document.addEventListener('keydown', function (e) {
+      if (!lightbox || !lightbox.classList.contains('trp-open')) return;
+      if (e.key === 'Escape') {
+        closeLightbox();
+      } else if (e.key === 'ArrowLeft') {
+        goToSlide(currentIndex - 1);
+      } else if (e.key === 'ArrowRight') {
+        goToSlide(currentIndex + 1);
+      }
+    });
+
+    // QRCode Generation via QRCode.js
+    function generateMenuQR() {
+      if (!qrContainer) return;
+      qrContainer.innerHTML = '';
+
+      var baseUrl = window.location.href.split('#')[0].split('?')[0];
+      if (!baseUrl || baseUrl.startsWith('file:') || baseUrl === 'about:blank') {
+        baseUrl = window.location.href.split('#')[0];
+      }
+      var targetMenuUrl = baseUrl + '#menu';
+
+      if (qrTargetText) {
+        qrTargetText.textContent = 'Points to ' + (window.location.protocol === 'file:' ? 'this page #menu' : targetMenuUrl.replace(/^https?:\/\//, ''));
+      }
+
+      if (typeof QRCode !== 'undefined') {
+        new QRCode(qrContainer, {
+          text: targetMenuUrl,
+          width: 180,
+          height: 180,
+          colorDark: '#201611',
+          colorLight: '#FFFFFF',
+          correctLevel: QRCode.CorrectLevel.M
+        });
+      } else {
+        console.warn('QRCode library is loading or unavailable.');
+      }
+    }
+
+    // Generate QR code
+    generateMenuQR();
+
+    // Download QR Code as PNG
+    if (qrDownloadBtn) {
+      qrDownloadBtn.addEventListener('click', function () {
+        if (!qrContainer) return;
+        var canvas = qrContainer.querySelector('canvas');
+        var img = qrContainer.querySelector('img');
+        var dataUrl = '';
+
+        if (canvas && canvas.width > 0) {
+          try {
+            dataUrl = canvas.toDataURL('image/png');
+          } catch (err) {
+            console.warn('Canvas export warning:', err);
+          }
+        }
+
+        if (!dataUrl && img && img.src && img.src.indexOf('data:image') === 0) {
+          dataUrl = img.src;
+        }
+
+        if (dataUrl) {
+          var a = document.createElement('a');
+          a.download = 'trp-cafe-menu-qr.png';
+          a.href = dataUrl;
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+        } else {
+          alert('QR code image is still generating. Please try again in a moment.');
+        }
+      });
+    }
+
+  })();
 
 });
